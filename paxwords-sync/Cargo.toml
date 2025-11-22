@@ -1,0 +1,28 @@
+[package]
+authors = [ "Svyatoslav Nikolsky <svyatonik@gmail.com>" ]
+description = "Synchronization of paxwords password manager instances over network"
+license = "GPL-3.0-or-later"
+name = "paxwords-sync"
+version = "1.0.0"
+edition = "2024"
+
+[dependencies]
+anyhow.workspace = true
+async-bincode.workspace = true
+async-trait.workspace = true
+bincode = { workspace = true, features = [ "derive" ] }
+futures.workspace = true
+hex.workspace = true
+libp2p = { workspace = true, features = [ "autonat", "dns", "gossipsub", "identify", "kad", "macros", "mdns", "noise", "ping", "pnet", "request-response", "rsa", "tcp", "tokio", "yamux" ] }
+parking_lot.workspace = true
+serde.workspace = true
+thiserror-context.workspace = true
+tokio = { workspace = true, features = [ "sync" ] }
+tokio-stream.workspace = true
+tokio-util = { workspace = true, features = [ "compat", "io-util" ] }
+tracing.workspace = true
+
+paxwords-core = { path = "../paxwords-core" }
+
+[dev-dependencies]
+tracing-subscriber = { workspace = true, features = [ "env-filter" ] }

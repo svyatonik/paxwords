@@ -1,0 +1,20 @@
+# docker-compose up
+# or to rebuild underlying images:
+# docker-compose up --build
+version: '3.8'
+services:
+  node1:
+    init: true
+    environment:
+      RUST_LOG: 'paxwords_core::sync::state=trace,paxwords_core=debug,paxwords_demo=debug,paxwords_sync=debug,info'
+    build:
+      context: .
+      dockerfile: paxwords-demo.Dockerfile
+  node2:
+    init: true
+    environment:
+      RUST_LOG: 'paxwords_core::sync::state=trace,paxwords_core=debug,paxwords_demo=debug,paxwords_sync=debug,info'
+    build:
+      context: .
+      dockerfile: paxwords-demo.Dockerfile
+

@@ -1,0 +1,22 @@
+[package]
+authors = [ "Svyatoslav Nikolsky <svyatonik@gmail.com>" ]
+description = "Basic primitives of paxwords password manager"
+license = "GPL-3.0-or-later"
+name = "paxwords-core-fuzz"
+version = "1.0.0"
+edition = "2024"
+
+[dependencies]
+rand.workspace = true
+tempdir.workspace = true
+tokio = { workspace = true, features = [ "rt-multi-thread" ] }
+tokio-stream.workspace = true
+tracing-subscriber = { workspace = true, features = [ "env-filter" ] }
+
+paxwords-core = { path = "../paxwords-core" }
+paxwords-demo-framework = { path = "../paxwords-demo-framework" }
+
+[[bin]]
+name = "paxwords-core-fuzz"
+test = false
+bench = false

@@ -1,0 +1,14 @@
+[package]
+authors = [ "Svyatoslav Nikolsky <svyatonik@gmail.com>" ]
+description = "paxwords password manager demo app utilities"
+license = "GPL-3.0-or-later"
+name = "paxwords-demo-framework"
+version = "1.0.0"
+edition = "2024"
+
+[dependencies]
+rand.workspace = true
+tokio = { workspace = true, features = [ "macros", "sync" ] }
+tracing.workspace = true
+
+paxwords-core = { path = "../paxwords-core" }

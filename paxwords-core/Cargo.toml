@@ -1,0 +1,47 @@
+[package]
+authors = [ "Svyatoslav Nikolsky <svyatonik@gmail.com>" ]
+description = "Fuzzer for paxwords password manager"
+license = "GPL-3.0-or-later"
+name = "paxwords-core"
+version = "1.0.0"
+edition = "2024"
+
+[features]
+default = [ "enable-memsecurity" ]
+enable-keyring = [ "keyring" ]
+enable-memsecurity = [ "memsecurity" ]
+
+[dependencies]
+bincode = { workspace = true, features = [ "derive" ] }
+chacha20poly1305.workspace = true
+futures.workspace = true
+hex.workspace = true
+hkdf.workspace = true
+memsecurity = { optional = true, workspace = true }
+pbkdf2.workspace = true
+parking_lot.workspace = true
+rand_core = { workspace = true, features = [ "os_rng" ] }
+secrecy.workspace = true
+serde = { workspace = true, features = [ "derive" ] }
+serde-big-array.workspace = true
+sha2.workspace = true
+subtle.workspace = true
+thiserror.workspace = true
+thiserror-context.workspace = true
+tokio = { workspace = true, features = [ "macros", "sync" ] }
+tokio-stream.workspace = true
+tracing.workspace = true
+x25519-dalek = { workspace = true, features = [ "alloc", "static_secrets", "zeroize" ] }
+zeroize = { workspace = true, features = [ "zeroize_derive" ] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+keyring = { optional = true, workspace = true, features = [ "linux-native" ] }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+keyring = { optional = true, workspace = true, features = [ "windows-native" ] }
+
+[dev-dependencies]
+assert_matches.workspace = true
+hex-literal.workspace = true
+tempdir.workspace = true
+tokio = { workspace = true, features = [ "macros", "rt" ] }
